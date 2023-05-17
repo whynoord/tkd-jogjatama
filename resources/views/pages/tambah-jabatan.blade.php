@@ -16,8 +16,8 @@
       @endif
 
 <div class="container py-5">
-    <h2 class="mb-3">Tambah Jabatan</h2>
-    <form method="post" action="{{ route('simpanJabatan') }}" class="col-lg-8 pt-5">
+    <h2 class="mb-3 text-center">Tambah Jabatan</h2>
+    <form method="post" action="{{ route('simpanJabatan') }}" class="col pt-5">
       @csrf
       
         <div class="mb-3">
