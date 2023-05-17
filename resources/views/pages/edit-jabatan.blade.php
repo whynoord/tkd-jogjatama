@@ -5,7 +5,7 @@
 @endsection
     
 @section('content')
-    {{-- @if ($errors->any())
+    @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -13,7 +13,7 @@
             @endforeach
         </ul>
       </div><br />
-      @endif --}}
+      @endif
 
 <div class="container py-5">
     <h2 class="mb-3">Edit Jabatan</h2>
@@ -24,7 +24,7 @@
           <label for="position" class="form-label">Nama Jabatan</label>
           <input type="text" class="form-control" name="position" value="{{ $position->position }}">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-transparent border-primary text-primary py-2 px-3">Submit</button>
       </form>
 </div>
 @endsection

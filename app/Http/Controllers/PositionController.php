@@ -38,9 +38,11 @@ class PositionController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $validatedData = $request->validate([
+            'position' => 'required|string|max:255',
+        ]);
         
-        Position::create($data);
+        Position::create($validatedData);
         return redirect()->route('jabatan');
     }
 

@@ -38,9 +38,11 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $validatedData = $request->validate([
+            'contract' => 'required|string|max:255',
+        ]);
         
-        Contract::create($data);
+        Contract::create($validatedData);
         return redirect()->route('kontrak');
     }
 
