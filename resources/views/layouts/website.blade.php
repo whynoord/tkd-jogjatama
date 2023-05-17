@@ -9,7 +9,11 @@
 </head>
 <body>
     @include('includes.navbar')
-    @yield('content')
+    <div class="container py-3">
+        <div class="rounded p-3 bg-white">
+            @yield('content')
+        </div>
+    </div>
     @include('includes.script')
 </body>
 </html>

@@ -15,14 +15,11 @@ use App\Http\Controllers\ContractController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+Route::get('/', [EmployeeController::class, 'index']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/jabatan', [PositionController::class, 'index'])->name('jabatan');
 Route::get('/tambah-jabatan', [PositionController::class, 'create'])->name('tambahJabatan');
 Route::get('/edit-jabatan/{id}', [PositionController::class, 'edit'])->name('editJabatan');

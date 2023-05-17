@@ -6,8 +6,13 @@
     
 @section('content')
 <div class="container">
-    <h1>Daftar Pegawai</h1>
-    <a href="{{ route('tambahPegawai') }}"><button class="btn btn-primary">Tambah</button></a>
+    <h3 class="text-center">Daftar Pegawai</h3>
+    <hr class="mb-5">
+    <div class="d-flex mb-3">
+      <div class="ms-auto">
+        <a href="{{ route('tambahPegawai') }}"><button class="btn btn-transparent border-primary text-primary py-2 px-3">Tambah</button></a>
+      </div>
+    </div>
     <table class="table table-striped">
         <thead>
             <tr>
