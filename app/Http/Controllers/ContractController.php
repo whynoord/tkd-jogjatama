@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contract;
 
 class ContractController extends Controller
 {
@@ -13,7 +14,10 @@ class ContractController extends Controller
      */
     public function index()
     {
-        //
+        $contracts = Contract::latest()->get();
+        return view('pages.kontrak', [
+            'contracts' => $contracts
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.tambah-kontrak');
     }
 
     /**
@@ -34,7 +38,10 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        Contract::create($data);
+        return redirect()->route('kontrak');
     }
 
     /**
@@ -56,7 +63,10 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contract = Contract::findOrFail($id);
+        return view('pages.edit-kontrak', [
+            'contract' => $contract
+        ]);
     }
 
     /**
@@ -68,7 +78,8 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Contract::findOrFail($id)->update($request->all());
+        return redirect()->route('kontrak');
     }
 
     /**
@@ -79,6 +90,7 @@ class ContractController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contract::findOrFail($id)->delete();
+        return redirect()->route('kontrak');
     }
 }

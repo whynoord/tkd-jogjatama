@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
+use App\Models\Position;
+use App\Models\Contract;
 
 class EmployeeController extends Controller
 {
@@ -13,7 +16,10 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        $employees = Employee::latest()->get();
+        return view('pages.pegawai', [
+            'employees' => $employees
+        ]);
     }
 
     /**
@@ -23,7 +29,12 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        $contracts = Contract::all();
+        $positions = Position::all();
+        return view('pages.tambah-pegawai', [
+            'positions' => $positions,
+            'contracts' => $contracts
+        ]);
     }
 
     /**
@@ -34,7 +45,10 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        Employee::create($data);
+        return redirect()->route('pegawai');
     }
 
     /**
@@ -56,7 +70,14 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $positions = Position::all();
+        $contracts = Contract::all();
+        $employee = Employee::findOrFail($id);
+        return view('pages.edit-pegawai', [
+            'employee' => $employee,
+            'positions' => $positions,
+            'contracts' => $contracts
+        ]);
     }
 
     /**
@@ -68,7 +89,8 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        employee::findOrFail($id)->update($request->all());
+        return redirect()->route('pegawai');
     }
 
     /**
@@ -79,6 +101,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        employee::findOrFail($id)->delete();
+        return redirect()->route('pegawai');
     }
 }
